@@ -29,7 +29,7 @@ class Hangman:
             print(f"Sorry, {guess} is not in the word. Try again.")    
         #return self.param1 + ext_input + Cylinder.att
 
-    def ask_for_input(self, guess):  # method to modify attribute
+    def ask_for_input(self):  # method to modify attribute
         while True:
             guess = input("Please enter a single letter: ")
             if not guess.isalpha() and len(guess) == 1:
