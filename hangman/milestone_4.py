@@ -39,4 +39,5 @@ class Hangman:
             else:              
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
-    ask_for_input()
+hangman = Hangman()
+hangman.ask_for_input()
