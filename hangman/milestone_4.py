@@ -10,7 +10,7 @@ class Hangman:
         # attribute defined using other attributes
         self.num_list = 0 # number of unguessed unique letters
         self.list_of_guesses = [] #number of wrong guesses
-        self.word = word_list.random()
+        self.word = random.choice(word_list)
         self.word_guessed = []
         for self.letter in self.word:
             self.word_guessed.append("_")
