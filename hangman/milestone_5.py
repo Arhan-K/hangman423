@@ -16,11 +16,6 @@ class Hangman:
         for self.letter in self.word:
             self.word_guessed.append("_")
 
-        # attribute defined without a parameter
-        #self.surface_area = None
-        #self.volume = None
-        
-        #self.num_lives = 5
 
     # methods
     def check_guess(self, guess):  # can add external arguments
@@ -41,7 +36,7 @@ class Hangman:
         #return self.param1 + ext_input + Cylinder.att
 
     def ask_for_input(self):  # method to modify attribute
-        while True:
+        """while True:
             guess = input("Please enter a single letter: ")
             if not guess.isalpha() and len(guess) == 1:
                 raise ValueError("Invalid letter. Please, enter a single alphabetical character.")
@@ -50,7 +45,16 @@ class Hangman:
             else:              
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
-                print(f"List of guessed letters: {self.list_of_guesses}")
+                print(f"List of guessed letters: {self.list_of_guesses}") """
+        guess = input("Please enter a single letter: ")
+        if not guess.isalpha() and len(guess) == 1:
+            raise ValueError("Invalid letter. Please, enter a single alphabetical character.")
+        elif guess in self.list_of_guesses:
+            raise ValueError("You have already tried this letter! ")
+        else:              
+            self.check_guess(guess)
+            self.list_of_guesses.append(guess)
+            print(f"List of guessed letters: {self.list_of_guesses}")
 
 def play_game(word_list):
     num_lives = 5
