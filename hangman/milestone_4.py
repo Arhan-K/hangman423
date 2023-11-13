@@ -3,7 +3,7 @@ import milestone_2
 class Hangman:
     def __init__(self, word_list, num_lives=5):
         # attributes
-        self.word_list = word_list
+        self.word_list = milestone_2.word_list
         self.num_lives = num_lives
 
         # attribute defined using other attributes
