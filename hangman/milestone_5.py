@@ -26,8 +26,9 @@ class Hangman:
             for i in range(len(self.word)):
                 if self.word[i] == guess:
                     self.word_guessed[i] = (guess)
+                    self.num_letters -= 1
                     #indexes.append(i)
-            self.num_letters -= 1
+            
             
         else:
             self.num_lives -= 1
@@ -36,16 +37,7 @@ class Hangman:
         #return self.param1 + ext_input + Cylinder.att
 
     def ask_for_input(self):  # method to modify attribute
-        """while True:
-            guess = input("Please enter a single letter: ")
-            if not guess.isalpha() and len(guess) == 1:
-                raise ValueError("Invalid letter. Please, enter a single alphabetical character.")
-            elif guess in self.list_of_guesses:
-                raise ValueError("You have already tried this letter! ")
-            else:              
-                self.check_guess(guess)
-                self.list_of_guesses.append(guess)
-                print(f"List of guessed letters: {self.list_of_guesses}") """
+        #while True:
         guess = input("Please enter a single letter: ")
         if not guess.isalpha() and len(guess) == 1:
             raise ValueError("Invalid letter. Please, enter a single alphabetical character.")
@@ -60,7 +52,7 @@ def play_game(word_list):
     num_lives = 5
     game = Hangman(word_list, num_lives)
     while True:
-        print(game.num_lives)
+        print(f"You have {game.num_lives} lives left")
         if game.num_lives == 0:
             print("You lost!")
         if game.num_letters > 0:
