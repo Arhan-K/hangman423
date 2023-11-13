@@ -1,4 +1,5 @@
 import milestone_2
+import random
 
 class Hangman:
     def __init__(self, word_list = milestone_2.word_list, num_lives=5):
