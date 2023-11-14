@@ -1,4 +1,3 @@
-#import milestone_2
 import random
 
 class Hangman:
@@ -31,9 +30,9 @@ class Hangman:
 
     Methods:
     -------
-    check_letter(letter)
+    check_guess(letter)
         Checks if the letter is in the word.
-    ask_letter()
+    ask_for_input()
         Asks the user for a letter.
     '''
     def __init__(self, word_list, num_lives=5):
@@ -52,13 +51,24 @@ class Hangman:
         for self.letter in self.word:
             self.word_guessed.append("_")
         
-        print(f"The mistery word has {self.num_letters} characters")
-        print(f"{self.word_guessed}")
+        print(f"The mystery word has {self.num_letters} characters")
         pass
 
 
     # methods
     def check_guess(self, guess):  
+        '''
+        Checks if the guess input fulfills the criteria of being a single, alphabetic letter.
+        If it is, it checks if the letter is in the word.
+        If it is, it replaces the '_' in the word_guessed list with the letter.
+        If it is not, it reduces the number of lives by 1.
+
+        Parameters:
+        ----------
+        letter: str
+            The letter to be checked
+
+        '''
         guess = guess.lower()
         if guess in self.word:
             print(f"Good guess! {guess} is in the word.")
@@ -85,6 +95,23 @@ class Hangman:
         pass
 
 def play_game(word_list):
+    '''
+        Checks the number of lives left in the game, and the number of unique letters that are not yet guessed.
+        If there are at no lives left, the user gets a message saying they lost, along with the correct word.
+        If the user has a non-zero number of lives left and still hasn't guessed all unique letters, they are shown
+        their current guesses, including the right and wrong answers, told how many lives are left, and prompted to 
+        enter another letter, by calling the ask_for_input() method in the Hangman class.
+        If the user has a non-zero number of lives left and all unique letters are guessed, the user is shown a 
+        message informing that they have won the game
+
+        Parameters:
+        ----------
+        word_list: list
+            A list of strings containing the possible words in the game, the winning word being chosen randomly
+        num_lives: int
+            An integer value representing the number of lives remaining for the user. Initialised at 5
+
+        '''
     num_lives = 5
     game = Hangman(word_list, num_lives)
     while num_lives >= 0 and game.num_unique_letters >= 0:
@@ -92,7 +119,7 @@ def play_game(word_list):
             print(f"You lost! The word was {game.word}")
             break
         elif game.num_lives != 0 and game.num_unique_letters > 0:
-            #print(f"Guessed word: {game.word_guessed}")
+            print(f"Guessed word: {game.word_guessed}")
             print(f"You have {game.num_lives} lives left")
             game.ask_for_input()
         elif game.num_lives != 0 and game.num_unique_letters == 0:
@@ -101,6 +128,5 @@ def play_game(word_list):
     pass
 
 if __name__ == '__main__':
-    word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']
+    word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon', 'raspberry']
     play_game(word_list)
-#play_game(milestone_2.word_list)
